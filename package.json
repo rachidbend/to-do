@@ -1,0 +1,23 @@
+{
+  "name": "todo-app-main",
+  "version": "1.0.0",
+  "description": "![Design preview for the Todo app coding challenge](./design/desktop-preview.jpg)",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rachidbend/to-do.git"
+  },
+  "author": "Rachid Bendaghor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rachidbend/to-do/issues"
+  },
+  "homepage": "https://github.com/rachidbend/to-do#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.2.1",
+    "parcel": "^2.2.1"
+  }
+}
