@@ -12,12 +12,16 @@
       href="./images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="./src/sass/main.scss" />
-    <script defer src="./src/js/app.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"
+    ></script>
+    <script defer type="module" src="./src/js/app.js"></script>
 
     <title>Frontend Mentor | Todo app</title>
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
+    <!-- <style>
       .attribution {
         font-size: 11px;
         text-align: center;
@@ -25,14 +29,58 @@
       .attribution a {
         color: hsl(228, 45%, 44%);
       }
-    </style>
+    </style> -->
   </head>
   <body>
-    Todo
+    <div class="background-img"></div>
+    <section class="app">
+      <div class="todo__top">
+        <h1 class="todo">Todo</h1>
+        <div class="todo__theme">
+          <input type="checkbox" id="theme">
+          <img class="" src="./images/icon-sun.svg" alt="sun icon" />
+          <img class="hidden" src="./images/icon-moon.svg" alt="moon icon" />
+        </div>
+     
+          
+        </button>
+      </div>
+      <div class="todo__body">
+        <div class="todo__add">
+          <input type="checkbox" class="item__check">
+          <input type="text" placeholder="Create a new todo...">
+        </div>
+        <div class="todo__items">
+          <ul class="todo__list">
+            <div class="todo__item">
+              <input type="checkbox" class="item__check">
+              <button class="item__desc">Complete onlineJavascript course</button>
+              <button class="todo__remove"><img src="./images/icon-cross.svg" alt="remove btn"></button>
+            </div>
 
-    <!-- Add dynamic number -->
-    items left All Active Completed Clear Completed Drag and drop to reorder
-    list
+            <div class="todo__item">
+              <input type="checkbox" class="item__check">
+              <button class="item__desc">Complete onlineJavascript course</button>
+              <button class="todo__remove"><img src="./images/icon-cross.svg" alt=""></button>
+            </div>
+          </ul>
+        </div>
+
+      </div>
+      <div class="todo__footer">
+        <p class="todo__items-left"><span class="num-of-items">0</span> items left</p>
+        <div class="todo__sort">
+          <button class="todo__sort--all">All</button>
+          <button class="todo__sort--active">Active</button>
+          <button class="todo__sort--Completed">Completed</button>
+        </div>
+        <button class="todo__clear">Clear Completed</button>
+      </div>
+      <div class="todo__tip">Drag and drop to reorder list</div>
+    </section>
+    <div class="background-color"></div>
+
+    
 
     <div class="attribution">
       Challenge by
