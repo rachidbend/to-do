@@ -11,6 +11,9 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/sass/main.scss" />
     <script
       defer
@@ -38,29 +41,44 @@
         <h1 class="todo">Todo</h1>
         <div class="todo__theme">
           <input type="checkbox" id="theme">
-          <img class="" src="./images/icon-sun.svg" alt="sun icon" />
-          <img class="hidden" src="./images/icon-moon.svg" alt="moon icon" />
+          <img class="img--sun" src="./images/icon-sun.svg" alt="sun icon" />
+          <img class="img--moon" src="./images/icon-moon.svg" alt="moon icon" />
         </div>
      
           
         </button>
       </div>
+
       <div class="todo__body">
-        <div class="todo__add">
-          <input type="checkbox" class="item__check">
+        <div class="todo__add todo__item">
+          <label  class="todo__container--check">
+            <input type="checkbox" class="item__check">
+            <span class="item__checkmark" ></span>
+          </label>
           <input type="text" placeholder="Create a new todo...">
         </div>
+
         <div class="todo__items">
           <ul class="todo__list">
+            
             <div class="todo__item">
-              <input type="checkbox" class="item__check">
-              <button class="item__desc">Complete onlineJavascript course</button>
+              <label  class="todo__container--check">
+                <input type="checkbox" class="item__check">
+                <span class="item__checkmark" >
+                  <img class="item__checkmark--checked" src="./images/icon-check.svg" alt="cheched icon">
+                </span>
+              </label>
+
+              <p class="item__desc">Complete onlineJavascript course</p>
               <button class="todo__remove"><img src="./images/icon-cross.svg" alt="remove btn"></button>
             </div>
 
             <div class="todo__item">
-              <input type="checkbox" class="item__check">
-              <button class="item__desc">Complete onlineJavascript course</button>
+              <label  class="todo__container--check">
+                <input type="checkbox" class="item__check">
+                <span class="item__checkmark" ></span>
+              </label>
+              <p class="item__desc">Complete onlineJavascript course</p>
               <button class="todo__remove"><img src="./images/icon-cross.svg" alt=""></button>
             </div>
           </ul>
@@ -82,11 +100,11 @@
 
     
 
-    <div class="attribution">
+    <!-- <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
       >. Coded by <a href="#">Your Name Here</a>.
-    </div>
+    </div> -->
   </body>
 </html>
