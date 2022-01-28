@@ -53,15 +53,29 @@
         <div class="todo__add todo__item">
           <label  class="todo__container--check">
             <input type="checkbox" class="item__check">
-            <span class="item__checkmark" ></span>
+            <span class="item__checkmark" >
+              <img class="item__checkmark--checked" src="./images/icon-check.svg" alt="cheched icon">
+            </span>
           </label>
-          <input type="text" placeholder="Create a new todo...">
+          <input class="todo__input" type="text" placeholder="Create a new todo...">
         </div>
 
         <div class="todo__items">
-          <ul class="todo__list">
+          <ul class="todo__list" id="items">
             
-            <div class="todo__item">
+            <li class="todo__item item--checked" id="1">
+              <label  class="todo__container--check">
+                <input type="checkbox" class="item__check" checked>
+                <span class="item__checkmark" >
+                  <img class="item__checkmark--checked" src="./images/icon-check.svg" alt="cheched icon">
+                </span>
+              </label>
+
+              <p class="item__desc">Complete onlineJavascript course 1</p>
+              <button class="todo__remove"><img src="./images/icon-cross.svg" alt="remove btn"></button>
+            </li>
+
+            <li class="todo__item" id="2">
               <label  class="todo__container--check">
                 <input type="checkbox" class="item__check">
                 <span class="item__checkmark" >
@@ -69,18 +83,20 @@
                 </span>
               </label>
 
-              <p class="item__desc">Complete onlineJavascript course</p>
+              <p class="item__desc">Complete onlineJavascript course 2</p>
               <button class="todo__remove"><img src="./images/icon-cross.svg" alt="remove btn"></button>
-            </div>
+            </li>
 
-            <div class="todo__item">
+            <li class="todo__item" id="3">
               <label  class="todo__container--check">
                 <input type="checkbox" class="item__check">
-                <span class="item__checkmark" ></span>
+                <span class="item__checkmark" >
+                  <img class="item__checkmark--checked" src="./images/icon-check.svg" alt="cheched icon">
+                </span>
               </label>
-              <p class="item__desc">Complete onlineJavascript course</p>
+              <p class="item__desc">Complete onlineJavascript course 3</p>
               <button class="todo__remove"><img src="./images/icon-cross.svg" alt=""></button>
-            </div>
+            </li>
           </ul>
         </div>
 

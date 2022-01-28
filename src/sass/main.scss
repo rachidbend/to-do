@@ -31,7 +31,7 @@ body {
   position: relative;
 }
 
-// background  image
+// background  image ////////////////////////////////
 
 .background-img {
   height: 37.5vh;
@@ -41,14 +41,14 @@ body {
   background-size: cover;
 }
 
-// background color
+// background color //////////////////////////////////
 
 .background-color {
   background-color: var(--very-dark-blue);
   height: 62.5vh;
 }
 
-// App
+// App ///////////////////////////////////////////////
 
 .app {
   // main app styling
@@ -57,7 +57,7 @@ body {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 7.8rem;
+  margin-top: 7.4rem;
 
   font-family: 'Josefin Sans', sans-serif;
 
@@ -77,6 +77,7 @@ body {
     .todo__theme {
       position: relative;
       // make the toggle work
+      padding-top: 0.4rem;
       .img--moon {
         display: none;
       }
@@ -88,9 +89,11 @@ body {
       }
       #theme {
         position: absolute;
-        top: 25%;
-        right: 30%;
+        top: 20%;
+        right: 15%;
         padding: 2rem;
+        height: 2rem;
+        width: 2rem;
         opacity: 0;
       }
       img {
@@ -103,14 +106,29 @@ body {
   .todo__body {
     font-size: 1.8rem;
     .todo__add {
-      margin-bottom: 2rem;
-      margin-top: 4rem;
+      margin-bottom: 2.3rem;
+      margin-top: 3.6rem;
+      border-radius: 0.5rem;
+      vertical-align: middle;
+
+      // Input of the todo app //////////
+      .todo__input {
+        margin-left: 2rem;
+        border: none;
+        background: none;
+        color: var(--very-light-gray);
+        font-size: 1.8rem;
+      }
+
+      .todo__input::placeholder {
+        color: var(--light-Grayish-Blue);
+        font-family: 'Josefin Sans', sans-serif;
+      }
     }
     .todo__item {
       background-color: var(--very-dark-desaturated-blue);
       padding: 2rem 2.4rem;
-      border-radius: 0.5rem;
-
+      border-bottom: solid 1px red;
       display: flex;
 
       .todo__container--check {
@@ -134,20 +152,24 @@ body {
           border: solid 1px var(--Very-dark-grayish-blue);
           border-radius: 50%;
           position: absolute;
-          background: linear-gradient(
-            to right,
-            hsl(192, 100%, 67%) to hsl(280, 87%, 65%)
-          );
 
           .item__checkmark--checked {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 30%;
+            left: 30%;
+            visibility: hidden;
           }
         }
 
         .item__check:checked ~ .item__checkmark {
-          border: solid 1px red;
+          background: linear-gradient(
+            0.35turn,
+            hsl(192, 100%, 67%),
+            hsl(280, 87%, 65%)
+          );
+        }
+        .item__check:checked ~ .item__checkmark .item__checkmark--checked {
+          visibility: visible;
         }
       }
       .item__desc {
@@ -161,6 +183,14 @@ body {
     .todo__item:hover .todo__remove {
       opacity: 1;
       transition: ease-in-out 200ms;
+    }
+
+    .todo__list:first-child {
+      border-radius: 0.5rem;
+    }
+    .todo__list:last-child {
+      border-radius: 0.5rem;
+      border-bottom: none;
     }
   }
 }
