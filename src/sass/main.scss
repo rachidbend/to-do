@@ -1,20 +1,37 @@
 :root {
+  --todo-btn-active: hsl(220, 98%, 61%);
+
   // LIGHT THEME
   --very-light-gray: hsl(0, 0%, 98%);
-  --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
-  --light-Grayish-Blue: hsl(233, 11%, 84%);
-  --Dark-Grayish-Blue: hsl(236, 9%, 61%);
-  --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+  // --very-light-grayish-blue: hsl(236, 33%, 92%);
+  --light-grayish-blue: hsl(233, 11%, 84%);
+  --dark-grayish-blue-light: hsl(236, 9%, 61%);
+  --very-dark-grayish-blue: hsl(235, 19%, 35%);
 
   // DARK THEME
 
   --very-dark-blue: hsl(235, 21%, 11%);
-  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  // --very-dark-desaturated-blue: hsl(235, 24%, 19%);
   --light-grayish-blue: hsl(234, 39%, 85%);
   --light-grayish-blue-hover: hsl(236, 33%, 92%); //(hover)
-  --dark-grayish-blue: hsl(234, 11%, 52%);
-  --Very-dark-grayish-blue: hsl(233, 14%, 35%);
-  --Very-dark-grayish-blue: hsl(237, 14%, 26%);
+  --dark-grayish-blue-dark: hsl(234, 11%, 52%);
+  --very-dark-grayish-blue-1: hsl(233, 14%, 35%);
+  --very-dark-grayish-blue-2: hsl(237, 14%, 26%);
+}
+
+.theme--dark {
+  --item-background-color: hsl(235, 24%, 19%);
+  --item-text-color: hsl(233, 11%, 84%);
+
+  --background-color: hsl(235, 21%, 11%);
+  --border-color: rgba(72, 75, 106, 0.5);
+}
+.theme--light {
+  --item-background-color: hsl(0, 0%, 98%);
+  --item-text-color: hsl(235, 24%, 19%);
+
+  --background-color: hsl(0, 0%, 98%);
+  --border-color: rgba(72, 75, 106, 0.2);
 }
 
 html {
@@ -35,16 +52,22 @@ body {
 
 .background-img {
   height: 37.5vh;
-  background-image: url('./../img/bg-desktop-dark.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 }
 
+.theme--dark .background-img {
+  background-image: url('./../img/bg-desktop-dark.jpg');
+}
+.theme--light .background-img {
+  background-image: url('./../img/bg-desktop-light.jpg');
+}
+
 // background color //////////////////////////////////
 
 .background-color {
-  background-color: var(--very-dark-blue);
+  background-color: var(--background-color);
   height: 62.5vh;
 }
 
@@ -60,6 +83,10 @@ body {
   margin-top: 7.4rem;
 
   font-family: 'Josefin Sans', sans-serif;
+
+  .todo__body {
+    box-shadow: 0rem 10rem 6rem rgba(0, 0, 0, 0.1);
+  }
 
   // top part styling
   .todo__top {
@@ -110,13 +137,15 @@ body {
       margin-top: 3.6rem;
       border-radius: 0.5rem;
       vertical-align: middle;
+      box-shadow: 0rem 3rem 4rem rgba(0, 0, 0, 0.3);
 
       // Input of the todo app //////////
       .todo__input {
+        width: 100%;
         margin-left: 2rem;
         border: none;
         background: none;
-        color: var(--very-light-gray);
+        color: var(--item-text-color);
         font-size: 1.8rem;
       }
 
@@ -126,37 +155,39 @@ body {
       }
     }
     .todo__item {
-      background-color: var(--very-dark-desaturated-blue);
+      background-color: var(--item-background-color);
       padding: 2rem 2.4rem;
-      border-bottom: solid 1px red;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       .todo__container--check {
-        height: 2.5rem;
-        width: 2.5rem;
+        height: 2.4rem;
+        width: 2.4rem;
         position: relative;
         .item__check {
           position: absolute;
           top: 0;
           left: 0;
           padding: 2rem;
-          height: 2.5rem;
-          width: 2.5rem;
+          height: 2.4rem;
+          width: 2.4rem;
           opacity: 0;
-          cursor: pointer;
+          // cursor: pointer;
         }
 
         .item__checkmark {
-          height: 2.5rem;
-          width: 2.5rem;
-          border: solid 1px var(--Very-dark-grayish-blue);
+          height: 2.4rem;
+          width: 2.4rem;
+          border: solid 1px var(--border-color);
           border-radius: 50%;
           position: absolute;
+          cursor: pointer;
 
           .item__checkmark--checked {
             position: absolute;
-            top: 30%;
-            left: 30%;
+            top: 32%;
+            left: 29%;
             visibility: hidden;
           }
         }
@@ -167,6 +198,7 @@ body {
             hsl(192, 100%, 67%),
             hsl(280, 87%, 65%)
           );
+          border: none;
         }
         .item__check:checked ~ .item__checkmark .item__checkmark--checked {
           visibility: visible;
@@ -174,10 +206,16 @@ body {
       }
       .item__desc {
         font-size: 1.8rem;
-        color: var(--Very-Light-Grayish-Blue);
+        color: var(--item-text-color);
+        width: 100%;
+        margin: 0 2.8rem;
+        cursor: pointer;
       }
       .todo__remove {
         opacity: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
       }
     }
     .todo__item:hover .todo__remove {
@@ -185,12 +223,63 @@ body {
       transition: ease-in-out 200ms;
     }
 
-    .todo__list:first-child {
+    .todo__items {
       border-radius: 0.5rem;
+      overflow: hidden;
     }
-    .todo__list:last-child {
-      border-radius: 0.5rem;
-      border-bottom: none;
+    .todo__list {
+      .todo__item {
+        border-bottom: solid 1px var(--border-color);
+      }
     }
+
+    .item--checked {
+      .item__desc {
+        color: var(--very-dark-grayish-blue);
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  .todo__footer {
+    background-color: var(--item-background-color);
+    padding: 1.6rem 2.4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 1.3rem;
+    color: var(--dark-grayish-blue-dark);
+
+    .todo__btn {
+      font-size: 1.4rem;
+
+      font-weight: 700;
+      background: none;
+      color: var(--dark-grayish-blue-dark);
+      text-decoration: none;
+      transition: all 200ms;
+
+      &:hover {
+        color: var(--light-grayish-blue-hover);
+      }
+    }
+    .todo__btn--active {
+      color: var(--todo-btn-active);
+    }
+
+    .todo__sort {
+      padding-left: 3rem;
+      .todo__btn {
+        margin-left: 1.4rem;
+      }
+    }
+  }
+
+  .todo__tip {
+    text-align: center;
+    color: var(--very-dark-grayish-blue-1);
+    margin-top: 5rem;
+    font-size: 1.4rem;
   }
 }

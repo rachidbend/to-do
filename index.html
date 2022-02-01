@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="theme--dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -35,7 +35,9 @@
     </style> -->
   </head>
   <body>
-    <div class="background-img"></div>
+
+    <div class="background-img background__theme--dark"></div>
+    
     <section class="app">
       <div class="todo__top">
         <h1 class="todo">Todo</h1>
@@ -63,15 +65,15 @@
         <div class="todo__items">
           <ul class="todo__list" id="items">
             
-            <li class="todo__item item--checked" id="1">
+            <li class="todo__item item--checked " id="1">
               <label  class="todo__container--check">
-                <input type="checkbox" class="item__check" checked>
+                <input type="checkbox" class="item__check" checked='true'>
                 <span class="item__checkmark" >
                   <img class="item__checkmark--checked" src="./images/icon-check.svg" alt="cheched icon">
                 </span>
               </label>
 
-              <p class="item__desc">Complete onlineJavascript course 1</p>
+              <p class="item__desc">Complete online Javascript course</p>
               <button class="todo__remove"><img src="./images/icon-cross.svg" alt="remove btn"></button>
             </li>
 
@@ -83,7 +85,7 @@
                 </span>
               </label>
 
-              <p class="item__desc">Complete onlineJavascript course 2</p>
+              <p class="item__desc">Jog around the park 3x</p>
               <button class="todo__remove"><img src="./images/icon-cross.svg" alt="remove btn"></button>
             </li>
 
@@ -94,22 +96,58 @@
                   <img class="item__checkmark--checked" src="./images/icon-check.svg" alt="cheched icon">
                 </span>
               </label>
-              <p class="item__desc">Complete onlineJavascript course 3</p>
+              <p class="item__desc">10 minutes meditation</p>
               <button class="todo__remove"><img src="./images/icon-cross.svg" alt=""></button>
             </li>
+
+            <li class="todo__item" id="4">
+              <label  class="todo__container--check">
+                <input type="checkbox" class="item__check">
+                <span class="item__checkmark" >
+                  <img class="item__checkmark--checked" src="./images/icon-check.svg" alt="cheched icon">
+                </span>
+              </label>
+              <p class="item__desc">Read for 1 hour</p>
+              <button class="todo__remove"><img src="./images/icon-cross.svg" alt=""></button>
+            </li>
+
+            <li class="todo__item" id="5">
+              <label  class="todo__container--check">
+                <input type="checkbox" class="item__check">
+                <span class="item__checkmark" >
+                  <img class="item__checkmark--checked" src="./images/icon-check.svg" alt="cheched icon">
+                </span>
+              </label>
+              <p class="item__desc">Pick up groceries</p>
+              <button class="todo__remove"><img src="./images/icon-cross.svg" alt=""></button>
+            </li>
+
+            <li class="todo__item" id="6">
+              <label  class="todo__container--check">
+                <input type="checkbox" class="item__check">
+                <span class="item__checkmark" >
+                  <img class="item__checkmark--checked" src="./images/icon-check.svg" alt="cheched icon">
+                </span>
+              </label>
+              <p class="item__desc">Complete Todo App on Frontend Mentor</p>
+              <button class="todo__remove"><img src="./images/icon-cross.svg" alt=""></button>
+            </li>
+
           </ul>
+          <div class=" todo__footer">
+            <p class="todo__items-left"><span class="num-of-items">5</span> items left</p>
+            <div class="todo__sort">
+              <a href="#all" class="todo__btn--active todo__btn todo__sort--all">All</a>
+              <a href="#active" class="todo__btn todo__sort--active">Active</a>
+              <a  href="#completed"class="todo__btn todo__sort--Completed">Completed</a>
+            </div>
+            <a href="#" class="todo__btn todo__clear">Clear Completed</a>
+          </div>
+
         </div>
 
       </div>
-      <div class="todo__footer">
-        <p class="todo__items-left"><span class="num-of-items">0</span> items left</p>
-        <div class="todo__sort">
-          <button class="todo__sort--all">All</button>
-          <button class="todo__sort--active">Active</button>
-          <button class="todo__sort--Completed">Completed</button>
-        </div>
-        <button class="todo__clear">Clear Completed</button>
-      </div>
+
       <div class="todo__tip">Drag and drop to reorder list</div>
     </section>
     <div class="background-color"></div>
