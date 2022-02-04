@@ -1,4 +1,4 @@
-import icon from 'url:./../img/icon-check.svg';
+import icon from 'url:../img/icon-check.svg';
 
 console.log('hi there to-do');
 
