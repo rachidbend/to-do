@@ -60,38 +60,3 @@ list.addEventListener('click', e => {
   const item = check.closest('.todo__item');
   item.classList.toggle('item--checked');
 });
-
-// CHECK IF DONE OR NOT
-
-// THEME SWITCHER ----------------
-const themeDark = 'theme--dark';
-const themeLight = 'theme--light';
-
-const setTheme = function (themeName) {
-  const htmlElement = document.querySelector('html');
-  // when the theme is switched, see which theme is set first,
-  // then switch it, and indicate the switchet them in local storage
-  localStorage.setItem('theme', themeName);
-  // remove all theme classes
-  htmlElement.classList.remove(themeDark);
-  htmlElement.classList.remove(themeLight);
-
-  // add the apropriate theme class
-  htmlElement.classList.add(themeName);
-};
-
-const switchTheme = function () {
-  const localTheme = localStorage.getItem('theme');
-  console.log(localTheme);
-  // set Dark them as default
-  if (!localTheme) setTheme(themeDark);
-
-  if (localTheme === themeDark) setTheme(themeLight);
-  if (localTheme === themeLight) setTheme(themeDark);
-};
-
-// when the theme is switched
-document.querySelector('#theme').addEventListener('change', e => {
-  console.log(e);
-  switchTheme();
-});
