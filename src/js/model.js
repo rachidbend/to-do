@@ -23,3 +23,17 @@ export const addTodoItem = function (desc) {
 
   state.items.unshift(item);
 };
+
+export const toggleCheck = function (id, completed) {
+  console.log(completed);
+  if (completed === 'false') {
+    const item = state.items.find(item => item.id === id);
+    item.completed = true;
+    console.log(item);
+  }
+  if (completed === 'true') {
+    const item = state.items.find(item => item.id === id);
+    item.completed = false;
+    console.log(item);
+  }
+};

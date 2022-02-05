@@ -16,19 +16,46 @@ const controlTheme = function () {
   // handlder to know when to chenge the theme(when user changes theme)
   View.switchThemeHandler(themeHandler);
 };
-controlTheme();
 
 const controlAddItem = function () {
-  // get handler for when enter is pressed
-  // get the item description
-  // call model and give it description
-  // model should create a new item\
-  // give the all of the items to the View to be rendered
   const addItem = function (desc) {
     console.log(desc);
+    // call model and give it description
+    // model should create a new item
     model.addTodoItem(desc);
-    console.log(state.items);
+    console.log(state.items[0]);
+    // give the new item to the View to be rendered
+
+    View.render(state.items);
   };
+  // get handler for when enter is pressed
+  // get the item description
   View.addItemHandler(addItem);
 };
-controlAddItem();
+
+const controlItemCheck = function () {
+  const checkHanler = function (target) {
+    // get the item that is checked(target)
+    console.log(target);
+    const id = +target.id;
+    const checked = target.dataset.completed;
+    model.toggleCheck(id, checked);
+
+    // mark that item as checked in the model(state)
+    // rerender everything
+    View.render(state.items);
+  };
+
+  // have a handler for when the check button is pressed
+  View.addCheckHandler(checkHanler);
+};
+
+const init = function () {
+  // theme controller
+  controlTheme();
+  // adding todo controller
+  controlAddItem();
+  // item checking if complete
+  controlItemCheck();
+};
+init();
