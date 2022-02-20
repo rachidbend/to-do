@@ -36,20 +36,36 @@ class View {
     });
   }
 
-  render(items) {
-    // remove all items
-    this._clearList();
+  render(item) {
+    // // remove all items
+    // this._clearList();
 
     // generate markup
-    const markup = items
-      .map(item => {
-        return this._generateItemMarkup(item);
-      })
-      .join('');
-    console.log(markup);
-    // const markup = this._generateItemMarkup(item);
-    // add markup to the UI
+    // const markup = item
+    //   .map(item => {
+    //     return this._generateItemMarkup(item);
+    //   })
+    //   .join('');
+    const markup = this._generateItemMarkup(item);
+
     this._list.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  renderToggle(id) {
+    // 1) find item with this id
+    const allItems = this._list.querySelectorAll('.todo__item');
+    allItems.forEach(item => {
+      if (id !== +item.id) return;
+
+      // 2) toggle the class 'item--checked'
+      item.classList.toggle('item--checked');
+      // 3) add checkmark to indicate item is checked
+      // done by the css
+
+      // 4) change the completed dataset
+      console.log(item.dataset.completed);
+      item.dataset.completed === 'true';
+    });
   }
 
   _generateItemMarkup(item) {

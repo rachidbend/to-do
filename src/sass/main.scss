@@ -69,7 +69,7 @@ body {
 
 .background-color {
   background-color: var(--background-color);
-  height: 62.5vh;
+  min-height: 62.5vh;
 }
 
 // App ///////////////////////////////////////////////
@@ -162,49 +162,6 @@ body {
       justify-content: space-between;
       align-items: center;
 
-      .todo__container--check {
-        height: 2.4rem;
-        width: 2.4rem;
-        position: relative;
-        .item__check {
-          position: absolute;
-          top: 0;
-          left: 0;
-          padding: 2rem;
-          height: 2.4rem;
-          width: 2.4rem;
-          opacity: 0;
-          // cursor: pointer;
-        }
-
-        .item__checkmark {
-          height: 2.4rem;
-          width: 2.4rem;
-          border: solid 1px var(--border-color);
-          border-radius: 50%;
-          position: absolute;
-          cursor: pointer;
-
-          .item__checkmark--checked {
-            position: absolute;
-            top: 32%;
-            left: 29%;
-            visibility: hidden;
-          }
-        }
-
-        .item__check:checked ~ .item__checkmark {
-          background: linear-gradient(
-            0.35turn,
-            hsl(192, 100%, 67%),
-            hsl(280, 87%, 65%)
-          );
-          border: none;
-        }
-        .item__check:checked ~ .item__checkmark .item__checkmark--checked {
-          visibility: visible;
-        }
-      }
       .item__desc {
         font-size: 1.8rem;
         color: var(--item-text-color);
@@ -219,6 +176,50 @@ body {
         cursor: pointer;
       }
     }
+    .todo__container--check {
+      height: 2.4rem;
+      width: 2.4rem;
+      position: relative;
+      .item__check {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 2rem;
+        height: 2.4rem;
+        width: 2.4rem;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .item__checkmark {
+        height: 2.4rem;
+        width: 2.4rem;
+        border: solid 1px var(--border-color);
+        border-radius: 50%;
+        position: absolute;
+        cursor: pointer;
+
+        .item__checkmark--checked {
+          position: absolute;
+          top: 32%;
+          left: 29%;
+          visibility: hidden;
+        }
+      }
+    }
+
+    .item--checked .item__checkmark {
+      background: linear-gradient(
+        0.35turn,
+        hsl(192, 100%, 67%),
+        hsl(280, 87%, 65%)
+      );
+      border: none;
+    }
+    .item--checked .item__checkmark .item__checkmark--checked {
+      visibility: visible;
+    }
+
     .todo__item:hover .todo__remove {
       opacity: 1;
       transition: ease-in-out 200ms;

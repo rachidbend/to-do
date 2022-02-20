@@ -26,7 +26,7 @@ const controlAddItem = function () {
     console.log(state.items[0]);
     // give the new item to the View to be rendered
 
-    View.render(state.items);
+    View.render(state.items[0]);
   };
   // get handler for when enter is pressed
   // get the item description
@@ -43,7 +43,7 @@ const controlItemCheck = function () {
 
     // mark that item as checked in the model(state)
     // rerender everything
-    View.render(state.items);
+    View.renderToggle(id);
   };
 
   // have a handler for when the check button is pressed
