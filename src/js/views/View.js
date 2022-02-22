@@ -63,7 +63,7 @@ class View {
       // done by the css
 
       // 4) change the completed dataset
-      console.log(item.dataset.completed);
+      // console.log(item.dataset.completed);
       item.dataset.completed === 'true';
     });
   }
@@ -83,7 +83,7 @@ class View {
     </label>
 
     <p class="item__desc">${item.desc} </p>
-    <button class="todo__remove"><img src="./images/icon-cross.svg" alt="remove btn"></button>
+    <button class="todo__remove"><img class="todo__remove--img" src="./images/icon-cross.svg" alt="remove btn"></button>
   </li>
     
     `;
@@ -104,6 +104,27 @@ class View {
       const item = e.target.parentElement.parentElement;
       // call andpass the item to thehandler
       handler(item);
+    });
+  }
+
+  removeItem(id) {
+    // get the item with the id
+    const allItems = this._list.querySelectorAll('.todo__item');
+    console.log(allItems);
+    allItems.forEach(item => {
+      if (+item.id !== id) return;
+      // remove that item from UI
+      item.remove();
+    });
+  }
+
+  removeItemHandler(handler) {
+    this._list.addEventListener('click', e => {
+      if (!e.target.closest('.todo__remove--img')) return;
+      if (e.target.closest('.todo__remove--img')) {
+        const itemID = +e.target.closest('.todo__item').id;
+        handler(itemID);
+      }
     });
   }
 }

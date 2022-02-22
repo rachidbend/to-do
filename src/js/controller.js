@@ -17,9 +17,9 @@ const controlTheme = function () {
   View.switchThemeHandler(themeHandler);
 };
 
+// ADD ITEM ----------------
 const controlAddItem = function () {
   const addItem = function (desc) {
-    console.log(desc);
     // call model and give it description
     // model should create a new item
     model.addTodoItem(desc);
@@ -33,10 +33,10 @@ const controlAddItem = function () {
   View.addItemHandler(addItem);
 };
 
+// ITEM CHECK ----------------
 const controlItemCheck = function () {
   const checkHanler = function (target) {
     // get the item that is checked(target)
-    console.log(target);
     const id = +target.id;
     const checked = target.dataset.completed;
     model.toggleCheck(id, checked);
@@ -50,6 +50,21 @@ const controlItemCheck = function () {
   View.addCheckHandler(checkHanler);
 };
 
+// REMOVE ITEM ----------------
+const controlRemoveItem = function () {
+  const removeHandler = function (id) {
+    // 2) remove from state
+    model.removeItem(id);
+    // 3) remove from UI
+    View.removeItem(id);
+    console.log(state.items);
+  };
+
+  // handler
+  // 1) get the item to remove
+  View.removeItemHandler(removeHandler);
+};
+
 const init = function () {
   // theme controller
   controlTheme();
@@ -57,5 +72,7 @@ const init = function () {
   controlAddItem();
   // item checking if complete
   controlItemCheck();
+  // removeitem
+  controlRemoveItem();
 };
 init();

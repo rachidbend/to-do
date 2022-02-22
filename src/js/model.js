@@ -29,11 +29,17 @@ export const toggleCheck = function (id, completed) {
   if (completed === 'false') {
     const item = state.items.find(item => item.id === id);
     item.completed = true;
-    console.log(item);
   }
   if (completed === 'true') {
     const item = state.items.find(item => item.id === id);
     item.completed = false;
-    console.log(item);
   }
+};
+
+export const removeItem = function (id) {
+  // remove the item with that id from state
+  const itemIndex = state.items.findIndex(i => i.id === id);
+
+  if (itemIndex < 0) return;
+  state.items.splice(itemIndex, 1);
 };
