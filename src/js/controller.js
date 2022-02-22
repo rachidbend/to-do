@@ -23,7 +23,6 @@ const controlAddItem = function () {
     // call model and give it description
     // model should create a new item
     model.addTodoItem(desc);
-    console.log(state.items[0]);
     // give the new item to the View to be rendered
 
     View.render(state.items[0]);
@@ -39,11 +38,11 @@ const controlItemCheck = function () {
     // get the item that is checked(target)
     const id = +target.id;
     const checked = target.dataset.completed;
-    model.toggleCheck(id, checked);
+    const isChecked = model.toggleCheck(id, checked);
 
     // mark that item as checked in the model(state)
     // rerender everything
-    View.renderToggle(id);
+    View.renderToggle(id, isChecked);
   };
 
   // have a handler for when the check button is pressed
@@ -57,7 +56,6 @@ const controlRemoveItem = function () {
     model.removeItem(id);
     // 3) remove from UI
     View.removeItem(id);
-    console.log(state.items);
   };
 
   // handler

@@ -25,14 +25,14 @@ export const addTodoItem = function (desc) {
 };
 
 export const toggleCheck = function (id, completed) {
-  console.log(completed);
-  if (completed === 'false') {
+  if (completed === 'false' || completed === false) {
     const item = state.items.find(item => item.id === id);
     item.completed = true;
-  }
-  if (completed === 'true') {
+    return true;
+  } else if (completed === 'true' || completed === true) {
     const item = state.items.find(item => item.id === id);
     item.completed = false;
+    return false;
   }
 };
 

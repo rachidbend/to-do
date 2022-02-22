@@ -51,7 +51,7 @@ class View {
     this._list.insertAdjacentHTML('afterbegin', markup);
   }
 
-  renderToggle(id) {
+  renderToggle(id, isChecked) {
     // 1) find item with this id
     const allItems = this._list.querySelectorAll('.todo__item');
     allItems.forEach(item => {
@@ -64,7 +64,7 @@ class View {
 
       // 4) change the completed dataset
       // console.log(item.dataset.completed);
-      item.dataset.completed === 'true';
+      item.dataset.completed = isChecked;
     });
   }
 
@@ -110,7 +110,7 @@ class View {
   removeItem(id) {
     // get the item with the id
     const allItems = this._list.querySelectorAll('.todo__item');
-    console.log(allItems);
+
     allItems.forEach(item => {
       if (+item.id !== id) return;
       // remove that item from UI
