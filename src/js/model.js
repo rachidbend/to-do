@@ -43,3 +43,13 @@ export const removeItem = function (id) {
   if (itemIndex < 0) return;
   state.items.splice(itemIndex, 1);
 };
+
+export const itemsLeftCount = function () {
+  // go through the state and find how many items are not completed
+  const itemsLeft = state.items.filter(item => {
+    return !item.completed;
+  });
+
+  // return that number
+  return itemsLeft.length;
+};

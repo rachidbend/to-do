@@ -127,6 +127,10 @@ class View {
       }
     });
   }
+
+  itemsLeftCount(number) {
+    document.querySelector('.num-of-items').innerHTML = number;
+  }
 }
 
 export default new View();

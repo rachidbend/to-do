@@ -26,6 +26,9 @@ const controlAddItem = function () {
     // give the new item to the View to be rendered
 
     View.render(state.items[0]);
+
+    // render how many items are left
+    controlItemsLeftCount();
   };
   // get handler for when enter is pressed
   // get the item description
@@ -43,6 +46,9 @@ const controlItemCheck = function () {
     // mark that item as checked in the model(state)
     // rerender everything
     View.renderToggle(id, isChecked);
+
+    // render how many items are left
+    controlItemsLeftCount();
   };
 
   // have a handler for when the check button is pressed
@@ -56,11 +62,23 @@ const controlRemoveItem = function () {
     model.removeItem(id);
     // 3) remove from UI
     View.removeItem(id);
+
+    // render how many items are left
+    controlItemsLeftCount();
   };
 
   // handler
   // 1) get the item to remove
   View.removeItemHandler(removeHandler);
+};
+
+// ITEMS LEFT COUNT ----------------
+// this should be done every time an item is added, checked or removed
+const controlItemsLeftCount = function () {
+  // 1) ask model how many items are not done, aka left
+  const number = model.itemsLeftCount();
+  // 2) render to the UI the number
+  View.itemsLeftCount(number);
 };
 
 const init = function () {
@@ -72,5 +90,7 @@ const init = function () {
   controlItemCheck();
   // removeitem
   controlRemoveItem();
+  // items left count
+  controlItemsLeftCount();
 };
 init();
