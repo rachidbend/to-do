@@ -29,6 +29,9 @@ const controlAddItem = function () {
 
     // render how many items are left
     controlItemsLeftCount();
+
+    // === PERSIST CHANGES ===
+    controlSetLocalStorage();
   };
   // get handler for when enter is pressed
   // get the item description
@@ -49,6 +52,9 @@ const controlItemCheck = function () {
 
     // render how many items are left
     controlItemsLeftCount();
+
+    // === PERSIST CHANGES ===
+    controlSetLocalStorage();
   };
 
   // have a handler for when the check button is pressed
@@ -65,6 +71,9 @@ const controlRemoveItem = function () {
 
     // render how many items are left
     controlItemsLeftCount();
+
+    // === PERSIST CHANGES ===
+    controlSetLocalStorage();
   };
 
   // handler
@@ -76,12 +85,94 @@ const controlRemoveItem = function () {
 // this should be done every time an item is added, checked or removed
 const controlItemsLeftCount = function () {
   // 1) ask model how many items are not done, aka left
-  const number = model.itemsLeftCount();
+  model.itemsLeftCount();
   // 2) render to the UI the number
-  View.itemsLeftCount(number);
+  View.itemsLeftCount(state.itemsLeft);
+};
+
+// SHOW ALL ITEMS ----------------
+const controlAllItems = function () {
+  // handler
+  const allHandler = function () {
+    // render All in the UI
+    View.renderAll(state.items);
+
+    // === PERSIST CHANGES ===
+    controlSetLocalStorage();
+  };
+
+  View.showAllHandler(allHandler);
+};
+
+// FILTER ACTIVE ITEMS ----------------
+const controlActiveFilter = function () {
+  // handler
+  const activeHandler = function () {
+    // get in the state the active items(not completed)
+    model.activeFilter();
+    // render them in the UI
+    View.renderAll(state.itemsNotCompleted);
+
+    // === PERSIST CHANGES ===
+    controlSetLocalStorage();
+  };
+  View.activeFilterHandler(activeHandler);
+};
+
+// FILTER COMPLETED ITEMS ----------------
+const controlCompletedFilter = function () {
+  // handler
+  const completedHandler = function () {
+    // get in the state the completed items(not completed)
+    model.completedFilter();
+    // render them in the UI
+    View.renderAll(state.itemsCompleted);
+
+    // === PERSIST CHANGES ===
+    controlSetLocalStorage();
+  };
+  View.completedFilterHandler(completedHandler);
+};
+
+// CLEAR COMPLETED ITEMS ----------------
+const controlClearCompleted = function () {
+  // handler
+  const clearCompleted = function () {
+    // remove completed items from state (model)
+    model.clearCompleted();
+    // rerender everything
+    View.renderAll(state.items);
+
+    // === PERSIST CHANGES ===
+    controlSetLocalStorage();
+  };
+  View.ClearCompletedHandler(clearCompleted);
+};
+
+// persist state in the local storage
+const controlSetLocalStorage = function () {
+  // tell model set local storage
+  model.setLocalStorage();
+};
+
+const controlGetLocalStorage = function () {
+  const getLoclaStorage = function () {
+    const got = model.getLocalStorage();
+
+    if (got) {
+      // set theme
+      View.renderAll(state.items);
+      // render all items
+      // leave for later
+    }
+  };
+  View.getLoclaStorageHandler(getLoclaStorage);
 };
 
 const init = function () {
+  // get the state from local storage
+  controlGetLocalStorage();
+
   // theme controller
   controlTheme();
   // adding todo controller
@@ -92,5 +183,13 @@ const init = function () {
   controlRemoveItem();
   // items left count
   controlItemsLeftCount();
+  // filter active items
+  controlActiveFilter();
+  // filter completed items
+  controlCompletedFilter();
+  // Show All items
+  controlAllItems();
+  // Clear completed items
+  controlClearCompleted();
 };
 init();

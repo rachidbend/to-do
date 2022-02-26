@@ -1,5 +1,7 @@
-export const state = {
+export let state = {
   items: [],
+  itemsNotCompleted: [],
+  itemsCompleted: [],
   themes: ['theme--dark', 'theme--light'],
   activeTheme: 0,
   itemsLeft: 5,
@@ -51,5 +53,43 @@ export const itemsLeftCount = function () {
   });
 
   // return that number
-  return itemsLeft.length;
+  state.itemsLeft = itemsLeft.length;
+};
+
+export const activeFilter = function () {
+  const itemsLeft = state.items.filter(item => {
+    return !item.completed;
+  });
+
+  state.itemsNotCompleted = itemsLeft;
+};
+
+export const completedFilter = function () {
+  const itemsDone = state.items.filter(item => {
+    return item.completed;
+  });
+
+  state.itemsCompleted = itemsDone;
+};
+
+export const clearCompleted = function () {
+  // get state, check for the items that are completed
+  // get list of the items that are not completed
+  // meaning without the completed
+  const clear = state.items.filter(item => {
+    return !item.completed;
+  });
+  // make the state only havethe incompleted items(don't have completed ones)
+  state.items = clear;
+};
+
+export const setLocalStorage = function () {
+  localStorage.setItem('state', JSON.stringify(state));
+};
+
+export const getLocalStorage = function () {
+  const data = JSON.parse(localStorage.getItem('state'));
+  if (!data) return false;
+  state = data;
+  return true;
 };

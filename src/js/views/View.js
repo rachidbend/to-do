@@ -1,8 +1,12 @@
-import icon from 'url:../../img/icon-check.svg';
+import icon from 'url:./../../img/icon-check.svg';
 
 class View {
   _input = document.querySelector('.todo__input');
   _list = document.querySelector('.todo__list');
+  _active = document.querySelector('.todo__sort--active');
+  _completed = document.querySelector('.todo__sort--Completed');
+  _all = document.querySelector('.todo__sort--all');
+  _clear = document.querySelector('.todo__clear');
 
   switchTheme(themeClassName) {
     // get the element to change the class on
@@ -130,6 +134,48 @@ class View {
 
   itemsLeftCount(number) {
     document.querySelector('.num-of-items').innerHTML = number;
+  }
+
+  showAllHandler(handler) {
+    this._all.addEventListener('click', e => {
+      e.preventDefault();
+      handler();
+    });
+  }
+
+  activeFilterHandler(handler) {
+    this._active.addEventListener('click', e => {
+      e.preventDefault();
+      handler();
+    });
+  }
+
+  completedFilterHandler(handler) {
+    this._completed.addEventListener('click', e => {
+      e.preventDefault();
+      handler();
+    });
+  }
+
+  renderAll(items) {
+    const markup = items
+      .map(item => {
+        return this._generateItemMarkup(item);
+      })
+      .join(' ');
+    this._list.innerHTML = '';
+    this._list.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  ClearCompletedHandler(handler) {
+    this._clear.addEventListener('click', e => {
+      e.preventDefault();
+      handler();
+    });
+  }
+
+  getLoclaStorageHandler(handler) {
+    window.addEventListener('load', handler);
   }
 }
 
