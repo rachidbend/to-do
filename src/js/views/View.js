@@ -1,4 +1,5 @@
-import icon from 'url:./../../img/icon-check.svg';
+import iconCheck from './../../img/icon-check.svg';
+import iconCross from './../../img/icon-cross.svg';
 
 class View {
   _input = document.querySelector('.todo__input');
@@ -12,7 +13,6 @@ class View {
   setTheme(themes, themeClass) {
     this._html.classList.remove(themes[0]);
     this._html.classList.remove(themes[1]);
-    console.log(themes);
 
     this._html.classList.add(themeClass);
   }
@@ -86,7 +86,7 @@ class View {
     </label>
 
     <p class="item__desc">${item.desc} </p>
-    <button class="todo__remove"><img class="todo__remove--img" src="./images/icon-cross.svg" alt="remove btn"></button>
+    <button class="todo__remove"><img class="todo__remove--img" src="${icon}" alt="remove"></button>
   </li>
     
     `;

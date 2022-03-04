@@ -16,7 +16,7 @@ const controlChangeTheme = function () {
 
 const controlSetTheme = function () {
   const theme = state.themes[state.activeTheme];
-  console.log(theme);
+
   View.setTheme(state.themes, theme);
 };
 
