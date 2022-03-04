@@ -8,11 +8,11 @@ export let state = {
 };
 
 export const switchTheme = function () {
-  // change the active theme
-  const activeTheme = state.activeTheme === 0 ? 1 : 0;
-  state.activeTheme = activeTheme;
-  // return the active theme className
-  return state.themes[activeTheme];
+  const theme = state.activeTheme === 0 ? 1 : 0;
+  state.activeTheme = theme;
+  // console.log(theme);
+  console.log(state.activeTheme);
+  return state.themes[theme];
 };
 
 export const addTodoItem = function (desc) {

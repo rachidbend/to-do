@@ -4,17 +4,20 @@ import * as model from './model';
 import View from './views/View';
 
 // THEME SWITCHER ----------------
-const controlTheme = function () {
-  const themeHandler = function () {
-    // tell model to change the active theme and then return the theme className
+const controlChangeTheme = function () {
+  const themeChangeHandler = function () {
     const theme = model.switchTheme();
-    // call the View with the appropriate className to change the theme
-    View.switchTheme(theme);
-    console.log('theme is switched in controller');
+    controlSetTheme();
+    controlSetLocalStorage();
   };
 
-  // handlder to know when to chenge the theme(when user changes theme)
-  View.switchThemeHandler(themeHandler);
+  View.switchThemeHandler(themeChangeHandler);
+};
+
+const controlSetTheme = function () {
+  const theme = state.themes[state.activeTheme];
+  console.log(theme);
+  View.setTheme(state.themes, theme);
 };
 
 // ADD ITEM ----------------
@@ -161,8 +164,9 @@ const controlGetLocalStorage = function () {
 
     if (got) {
       // set theme
-      View.renderAll(state.items);
+      controlSetTheme();
       // render all items
+      View.renderAll(state.items);
       // leave for later
     }
   };
@@ -174,7 +178,7 @@ const init = function () {
   controlGetLocalStorage();
 
   // theme controller
-  controlTheme();
+  controlChangeTheme();
   // adding todo controller
   controlAddItem();
   // item checking if complete

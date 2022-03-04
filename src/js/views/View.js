@@ -7,15 +7,14 @@ class View {
   _completed = document.querySelector('.todo__sort--Completed');
   _all = document.querySelector('.todo__sort--all');
   _clear = document.querySelector('.todo__clear');
+  _html = document.querySelector('html');
 
-  switchTheme(themeClassName) {
-    // get the element to change the class on
-    const htmlElement = document.querySelector('html');
-    // remove all theme classes
-    htmlElement.classList = '';
+  setTheme(themes, themeClass) {
+    this._html.classList.remove(themes[0]);
+    this._html.classList.remove(themes[1]);
+    console.log(themes);
 
-    // add the apropriate theme class
-    htmlElement.classList.add(themeClassName);
+    this._html.classList.add(themeClass);
   }
 
   switchThemeHandler(handler) {
