@@ -81,12 +81,12 @@ class View {
         item.completed ? 'checked' : ''
       } >
       <span class="item__checkmark item__checkmark--check" >
-        <img class="item__checkmark--checked" src="${icon}" alt="cheched icon">
+        <img class="item__checkmark--checked" src="${iconCheck}" alt="cheched icon">
       </span>
     </label>
 
     <p class="item__desc">${item.desc} </p>
-    <button class="todo__remove"><img class="todo__remove--img" src="${icon}" alt="remove"></button>
+    <button class="todo__remove"><img class="todo__remove--img" src="${iconCross}" alt="remove"></button>
   </li>
     
     `;
