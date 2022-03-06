@@ -49,11 +49,6 @@ body {
   position: relative;
 }
 
-// testing remove image
-// .todo__remove--img{
-//   background-image: url('./../img/icon-check.svg');
-// }
-
 // background  image ////////////////////////////////
 
 .background-img {
@@ -142,8 +137,18 @@ body {
       margin-bottom: 2.3rem;
       margin-top: 3.6rem;
       border-radius: 0.5rem;
-      vertical-align: middle;
+      // vertical-align: middle;
+
       box-shadow: 0rem 3rem 4rem rgba(0, 0, 0, 0.3);
+
+      .todo__input--label {
+        margin-left: 3rem;
+        margin-right: -2rem;
+        color: var(--item-text-color);
+        font-size: 1.75rem;
+        width: 18rem;
+        display: none;
+      }
 
       // Input of the todo app //////////
       .todo__input {
@@ -153,13 +158,25 @@ body {
         background: none;
         color: var(--item-text-color);
         font-size: 1.8rem;
+        outline: none;
+        caret-color: hsl(220, 98%, 61%);
       }
 
+      .todo__input:focus {
+        width: 80%;
+      }
       .todo__input::placeholder {
         color: var(--light-Grayish-Blue);
         font-family: 'Josefin Sans', sans-serif;
       }
     }
+
+    .todo__add:focus-within {
+      .todo__input--label {
+        display: inline-block;
+      }
+    }
+
     .todo__item {
       background-color: var(--item-background-color);
       padding: 2rem 2.4rem;
