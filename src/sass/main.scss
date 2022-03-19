@@ -122,7 +122,7 @@ body {
         padding: 2rem;
         height: 2rem;
         width: 2rem;
-        opacity: 0;
+        opacity: 1;
       }
       img {
         padding-top: 0.3rem;
@@ -305,5 +305,75 @@ body {
     color: var(--very-dark-grayish-blue-1);
     margin-top: 5rem;
     font-size: 1.4rem;
+  }
+}
+
+//////////// RESPONSIVE design
+
+@media screen and (max-width: 700px) {
+  html {
+    font-size: 54%;
+  }
+  .app {
+    width: 48rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 44%;
+  }
+  .background-img {
+    height: 27vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .background-color {
+    background-color: var(--background-color);
+    min-height: 73vh;
+  }
+
+  .theme--dark .background-img {
+    background-image: url('./../img/bg-mobile-dark.jpg');
+  }
+  .theme--light .background-img {
+    background-image: url('./../img/bg-mobile-light.jpg');
+  }
+  .app {
+    margin-top: 6rem;
+    margin-top: 7rem;
+    width: 46rem;
+    // top part styling
+    .todo__top {
+      .todo {
+        font-size: 3.6rem;
+      }
+      .todo__add {
+        margin-bottom: 2.6rem;
+        margin-top: 3.8rem;
+        border-radius: 0.5rem;
+      }
+
+      #theme {
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        padding: 2rem;
+        height: 2.8rem;
+        width: 2.8rem;
+        opacity: 1;
+      }
+      img {
+        padding-top: 0.3rem;
+        width: 80%;
+        position: relative;
+        top: -1rem;
+        right: -1rem;
+      }
+    }
+    .todo__body {
+      font-size: 1.6rem;
+    }
   }
 }
